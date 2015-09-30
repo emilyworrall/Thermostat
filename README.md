@@ -23,4 +23,4 @@ Use the specification below to plan your code. Think about the separation of con
 
 #### To Do
 
-- Change colour according to energyUsage
+- detach colour display based
