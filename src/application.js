@@ -1,3 +1,9 @@
+console.log('Hello!');
+
+var thermostat = new Thermostat();
+
 $( document ).ready(function() {
-  console.log('Hello!');
+
+  $('#temperature_display').text(thermostat.temperature);
+
 });
