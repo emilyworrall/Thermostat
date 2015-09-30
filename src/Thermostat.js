@@ -6,6 +6,9 @@ function Thermostat() {
 
 Thermostat.prototype.powerSavingOn = function() {
   this.isPowerSaving = true;
+  if (this.temperature > 25) {
+    this.temperature = 25;
+  }
 };
 
 Thermostat.prototype.powerSavingOff = function() {
@@ -24,6 +27,7 @@ Thermostat.prototype.increaseTemp = function() {
   }
 
   this.displayEnergyUsage();
+  return this.temperature;
 };
 
 Thermostat.prototype.decreaseTemp = function() {
@@ -34,11 +38,13 @@ Thermostat.prototype.decreaseTemp = function() {
   }
 
   this.displayEnergyUsage();
+  return this.temperature;
 };
 
 Thermostat.prototype.reset = function() {
   this.temperature = 20;
   this.displayEnergyUsage();
+  return this.temperature;
 };
 
 Thermostat.prototype.displayEnergyUsage = function() {

@@ -31,27 +31,39 @@ describe('Thermostat', function() {
     });
   });
 
-  describe('power saving', function() {
+  describe('power saving mode,', function() {
+    describe('when switched on', function() {
 
-    it('can be switched on', function() {
-      thermostat.powerSavingOn();
-      expect(thermostat.isPowerSaving).toBe(true);
+      it('activates power saving mode', function() {
+        thermostat.powerSavingOn();
+        expect(thermostat.isPowerSaving).toBe(true);
+      });
+
+      it('will not allow the temperature to increase above 25 degrees', function() {
+        thermostat.temperature = 25;
+        expect(function() { thermostat.increaseTemp(); }).toThrowError('Above 25 degrees not available in power saving mode');
+      });
+
+      it('will reset the temperature to 25 degrees, if current temperature is higher', function() {
+        thermostat.isPowerSaving = false;
+        thermostat.temperature = 32;
+        thermostat.powerSavingOn();
+        expect(thermostat.temperature).toEqual(25);
+      });
     });
 
-    it('can be switched off', function() {
-      thermostat.powerSavingOff();
-      expect(thermostat.isPowerSaving).toBe(false);
-    });
+    describe('when switched off', function() {
 
-    it('when on, it will not allow the temperature to increase above 25 degrees', function() {
-      thermostat.temperature = 25;
-      expect(function() { thermostat.increaseTemp(); }).toThrowError('Above 25 degrees not available in power saving mode');
-    });
+      it('deactivates power saving mode', function() {
+        thermostat.powerSavingOff();
+        expect(thermostat.isPowerSaving).toBe(false);
+      });
 
-    it('when off, it will not allow the temperature to increase above 32 degrees', function() {
-      thermostat.isPowerSaving = false;
-      thermostat.temperature = 32;
-      expect(thermostat.increaseTemp).toThrowError('Above 32 degrees not possible');
+      it('will not allow the temperature to increase above 32 degrees', function() {
+        thermostat.isPowerSaving = false;
+        thermostat.temperature = 32;
+        expect(thermostat.increaseTemp).toThrowError('Above 32 degrees not possible');
+      });
     });
   });
 
