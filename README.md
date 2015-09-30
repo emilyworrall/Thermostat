@@ -23,4 +23,5 @@ Use the specification below to plan your code. Think about the separation of con
 
 #### To Do
 
-- detach colour display based
+- detach colour display change from app logic
+- add a LOT of CSS
