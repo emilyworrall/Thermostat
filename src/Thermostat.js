@@ -1,7 +1,7 @@
 function Thermostat() {
   this.temperature = 20;
   this.isPowerSaving = true;
-  this.energyUsage = 'medium';
+  this.colour = 'gold';
 }
 
 Thermostat.prototype.powerSavingOn = function() {
@@ -26,7 +26,7 @@ Thermostat.prototype.increaseTemp = function() {
     throw new Error('Above 32 degrees not possible');
   }
 
-  this.displayEnergyUsage();
+  this.displayColour();
   return this.temperature;
 };
 
@@ -37,22 +37,22 @@ Thermostat.prototype.decreaseTemp = function() {
     throw new Error('Too chilly in here');
   }
 
-  this.displayEnergyUsage();
+  this.displayColour();
   return this.temperature;
 };
 
 Thermostat.prototype.reset = function() {
   this.temperature = 20;
-  this.displayEnergyUsage();
+  this.displayColour();
   return this.temperature;
 };
 
-Thermostat.prototype.displayEnergyUsage = function() {
+Thermostat.prototype.displayColour = function() {
   if (this.temperature < 18) {
-    this.energyUsage = 'low';
+    this.colour = 'olivedrab';
   } else if (this.temperature < 25) {
-    this.energyUsage = 'medium';
+    this.colour = 'gold';
   } else {
-    this.energyUsage = 'high';
+    this.colour = 'orangered';
   }
 };

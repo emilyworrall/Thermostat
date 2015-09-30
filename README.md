@@ -19,3 +19,8 @@ Use the specification below to plan your code. Think about the separation of con
 - Power saving mode is on by default
 - You can reset the temperature to 20 by hitting the reset button
 - The thermostat should colour the display based on energy usage - < 18 is green, < 25 is yellow, otherwise red
+
+
+#### To Do
+
+- Change colour according to energyUsage

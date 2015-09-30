@@ -79,18 +79,18 @@ describe('Thermostat', function() {
     it('is high if temperature is 25', function() {
       thermostat.temperature = 24;
       thermostat.increaseTemp();
-      expect(thermostat.energyUsage).toEqual('high');
+      expect(thermostat.colour).toEqual('orangered');
     });
 
     it('is low if temperature is 17', function() {
       thermostat.temperature = 18;
       thermostat.decreaseTemp();
-      expect(thermostat.energyUsage).toEqual('low');
+      expect(thermostat.colour).toEqual('olivedrab');
     });
 
     it('is medium if temperature is 21', function() {
       thermostat.increaseTemp();
-      expect(thermostat.energyUsage).toEqual('medium');
+      expect(thermostat.colour).toEqual('gold');
     });
   });
 });

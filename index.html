@@ -4,12 +4,14 @@
   <meta charset="utf-8">
   <title>Thermostat</title>
 </head>
-<body>
+<body style="font-family: helvetica">
 <h1><span id="temperature_display">??</span>℃</h1>
-<a href="#increase_temperature" class="button" id="increase_button">+</a>
-<a href="#decrease_temperature" class="button" id="decrease_button">-</a>
-<p><a href="#reset_temperature" class="button" id="reset_button">reset</a></p>
-<input type="checkbox" id='power_saving_mode' name="power_saving_mode" value="power_saving_mode" checked> Power Saving Mode
+<button type="button" id="increase_button">+</button>
+<button type="button" id="decrease_button">-</button>
+<button type="button" id="reset_button">RESET</button><br><br>
+<div style="font-size: 15px"><input type="checkbox" id='power_saving_mode' name="power_saving_mode" checked>
+  Power Saving Mode
+</div>
 <script src="jquery-2.1.4.js"></script>
 <script src="src/Thermostat.js"></script>
 <script src="src/application.js"></script>
