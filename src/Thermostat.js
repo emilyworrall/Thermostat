@@ -10,7 +10,6 @@ Thermostat.prototype.powerSavingOn = function() {
     this.temperature = 25;
   }
 };
-
 Thermostat.prototype.powerSavingOff = function() {
   this.isPowerSaving = false;
 };
@@ -25,7 +24,6 @@ Thermostat.prototype.increaseTemp = function() {
   } else {
     throw new Error('Above 32 degrees not possible');
   }
-
   this.displayColour();
   return this.temperature;
 };
@@ -36,7 +34,6 @@ Thermostat.prototype.decreaseTemp = function() {
   } else {
     throw new Error('Too chilly in here');
   }
-
   this.displayColour();
   return this.temperature;
 };

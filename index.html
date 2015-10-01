@@ -5,16 +5,16 @@
   <title>Thermostat</title>
 </head>
 <body style="font-family: helvetica">
-<h1><span id="temperature_display">??</span>℃</h1>
-<button type="button" id="increase_button">+</button>
-<button type="button" id="decrease_button">-</button>
-<button type="button" id="reset_button">RESET</button><br><br>
-<div style="font-size: 15px"><input type="checkbox" id='power_saving_mode' name="power_saving_mode" checked>
-  Power Saving Mode
-</div>
-<script src="jquery-2.1.4.js"></script>
-<script src="src/Thermostat.js"></script>
-<script src="src/application.js"></script>
+  <h1><span id="temperature_display">??</span>℃</h1>
+  <button type="button" id="increase_button">+</button>
+  <button type="button" id="decrease_button">-</button>
+  <button type="button" id="reset_button">RESET</button><br><br>
+  <div style="font-size: 15px"><input type="checkbox" id='power_saving_mode' name="power_saving_mode" checked>
+    Power Saving Mode
+  </div>
+  <script src="jquery-2.1.4.js"></script>
+  <script src="src/Thermostat.js"></script>
+  <script src="src/application.js"></script>
 </body>
 </html>
 
@@ -24,9 +24,10 @@
   <form id="weather_status_form">
     <label for="city">City</label>
     <input type="text" id="weather_city" name="city" /></br>
-    <button type="submit">Change</button>
+    <input type="submit" value="Find my City!">
   </form>
   <p id="weather_description"></p>
+  <p>Current city: <span id="current_city"></span></p>
   <p>Temperature: <span id="weather_temp"></span></p>
   <p>Wind speed: <span id="weather_wind"></span></p>
 </div>

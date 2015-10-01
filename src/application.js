@@ -1,34 +1,36 @@
 console.log('Hello!');
 
 var thermostat = new Thermostat();
+var captureCity = "London"
 
-(function ($) {
+var updateTemperature = function() {
+  $('#temperature_display').text(thermostat.temperature);
+  $('#temperature_display').css('color', thermostat.colour);
+};
+
+// (function ($) {
 
 $(document).ready(function() {
 
-  $('#weather_city').val('London'),
-  $('#units_metric').attr('checked', 'checked');
-  processForm();
+  //$('#weather_city').val('London'),
+  // $('#units_metric').attr('checked', 'checked');
+  // processForm();
+    updateTemperature();
 
-  $('#temperature_display').text(thermostat.temperature);
-  $('#temperature_display').css('color', thermostat.colour);
 
   $('#increase_button').on('click', function() {
     thermostat.increaseTemp();
-    $('#temperature_display').text(thermostat.temperature);
-    $('#temperature_display').css('color', thermostat.colour);
+    updateTemperature();
   });
 
   $('#decrease_button').on('click', function() {
     thermostat.decreaseTemp();
-    $('#temperature_display').text(thermostat.temperature);
-    $('#temperature_display').css('color', thermostat.colour);
+    updateTemperature();
   });
 
   $('#reset_button').on('click', function() {
     thermostat.reset();
-    $('#temperature_display').text(thermostat.temperature);
-    $('#temperature_display').css('color', thermostat.colour);
+    updateTemperature();
   });
 
   $('#power_saving_mode').on('change', function() {
@@ -36,11 +38,16 @@ $(document).ready(function() {
       thermostat.powerSavingOn();
     } else {
       thermostat.powerSavingOff();
-
     }
+    updateTemperature();
+  });
 
-    $('#temperature_display').text(thermostat.temperature);
-    $('#temperature_display').css('color', thermostat.colour);
+  $('#weather_status_form').submit(function(event){
+    event.preventDefault();
+    captureCity = $('#weather_city').val();
+    console.log(captureCity);
+    processForm();
+    updateTemperature();
   });
 
 });
@@ -48,7 +55,7 @@ $(document).ready(function() {
 
   function processForm() {
     $.ajax({
-      url: 'http://api.openweathermap.org/data/2.5/weather?q={city name}',
+      url: 'http://api.openweathermap.org/data/2.5/weather?q=' + captureCity,
       jsonp: 'callback',
       dataType: 'jsonp',
       cache: false,
@@ -57,10 +64,11 @@ $(document).ready(function() {
         units: $('#weather_status_form input[name="units"]:checked').val()
       },
       success: function (response) {
+        $('#current_city').text(response.name);
         $('#weather_description').text(response.weather[0].description);
         $('#weather_temp').text((response.main.temp -273.15).toFixed(1));
         $('#weather_wind').text(response.wind.speed);
       },
     });
   }
-})(jQuery);
+// })(jQuery);
