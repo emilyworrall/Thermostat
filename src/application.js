@@ -2,7 +2,13 @@ console.log('Hello!');
 
 var thermostat = new Thermostat();
 
+(function ($) {
+
 $(document).ready(function() {
+
+  $('#weather_city').val('London'),
+  $('#units_metric').attr('checked', 'checked');
+  processForm();
 
   $('#temperature_display').text(thermostat.temperature);
   $('#temperature_display').css('color', thermostat.colour);
@@ -36,4 +42,25 @@ $(document).ready(function() {
     $('#temperature_display').text(thermostat.temperature);
     $('#temperature_display').css('color', thermostat.colour);
   });
+
 });
+
+
+  function processForm() {
+    $.ajax({
+      url: 'http://api.openweathermap.org/data/2.5/weather?q={city name}',
+      jsonp: 'callback',
+      dataType: 'jsonp',
+      cache: false,
+      data: {
+        q: $('#weather_city').val(),
+        units: $('#weather_status_form input[name="units"]:checked').val()
+      },
+      success: function (response) {
+        $('#weather_description').text(response.weather[0].description);
+        $('#weather_temp').text((response.main.temp -273.15).toFixed(1));
+        $('#weather_wind').text(response.wind.speed);
+      },
+    });
+  }
+})(jQuery);
