@@ -1,0 +1,44 @@
+body {
+
+  background-size: cover;
+  background-image: url('http://7-themes.com/data_images/out/59/6973002-blue-mountains-landscape.jpg');
+
+}
+
+div#container {
+
+  background-color: #FFFFE6;
+  opacity: 0.65;
+  margin: 70px auto;
+  width: 400px;
+  padding: 10px 20px;
+
+}
+
+button#increase-button{
+
+  -webkit-border-radius: 19;
+   -moz-border-radius: 19;
+   border-radius: 19px;
+   font-family: Georgia;
+   color: #000000;
+   font-size: 29px;
+   background: #99d6ff;
+   padding: 0px 8px 3px 7px;
+   text-decoration: none;
+
+}
+
+button#decrease-button{
+
+  -webkit-border-radius: 19;
+   -moz-border-radius: 19;
+   border-radius: 19px;
+   font-family: Georgia;
+   color: #000000;
+   font-size: 29px;
+   background: #99d6ff;
+   padding: 0px 12px 3px 13px;
+   text-decoration: none;
+
+}
